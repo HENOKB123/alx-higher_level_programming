@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-import this
-Footer
+import thisr
