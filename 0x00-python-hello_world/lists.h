@@ -1,32 +1,22 @@
-#include "lists.h"
-/**
- * check_cycle - cycle tortoise and hare
- * @list: pointer to head
- * Return: 1 on success, 0 otherwise.
- */
-int check_cycle(listint_t *list)
-{
-	listint_t *tortoise;
-	listint_t *hare;
+#ifndef LISTS_H
+#define LISTS_H
 
-	if (list == NULL)
-		return (0);
-	tortoise = list;
-	hare = list;
-	while (hare->next != NULL && hare->next->next != NULL)
-	{
-		tortoise = tortoise->next;
-		hare = hare->next->next;
-		if (tortoise == hare)
-		{
-			tortoise = list;
-			while (tortoise != hare)
-			{
-				tortoise = tortoise->next;
-				hare = hare->next;
-			}
-			return (1);
-		}
-	}
-	return (0);
-}
+#include <stdlib.h>
+
+/**
+ * struct listint_s - singly linked list
+ * @n: integer
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ */
+typedef struct listint_s
+{
+int n;
+struct listint_s *next;
+} listint_t;
+size_t print_listint(const listint_t *h);
+listint_t *add_nodeint(listint_t **head, const int n);
+void free_listint(listint_t *head);
+int check_cycle(listint_t *list);
+#endif /* LISTS_H */
