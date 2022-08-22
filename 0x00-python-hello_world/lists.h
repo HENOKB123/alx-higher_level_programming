@@ -1,24 +1,32 @@
-#ifndef LISTS_H
-#define LISTS_H
-
-#include <stdlib.h>
-
+#include "lists.h"
 /**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
- *
- * Description: singly linked list node structure
+ * check_cycle - cycle tortoise and hare
+ * @list: pointer to head
+ * Return: 1 on success, 0 otherwise.
  */
-typedef struct listint_s
+int check_cycle(listint_t *list)
 {
-	int n;
-	struct listint_s *next;
-} listint_t;
+	listint_t *tortoise;
+	listint_t *hare;
 
-size_t print_listint(const listint_t *h);
-listint_t *add_nodeint(listint_t **head, const int n);
-void free_listint(listint_t *head);
-int check_cycle(listint_t *list);
-
-#endif
+	if (list == NULL)
+		return (0);
+	tortoise = list;
+	hare = list;
+	while (hare->next != NULL && hare->next->next != NULL)
+	{
+		tortoise = tortoise->next;
+		hare = hare->next->next;
+		if (tortoise == hare)
+		{
+			tortoise = list;
+			while (tortoise != hare)
+			{
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
+			return (1);
+		}
+	}
+	return (0);
+}
