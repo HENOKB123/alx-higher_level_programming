@@ -1,11 +1,7 @@
-
-
 #!/usr/bin/python3
-"""
-    Module contains of a single class
-"""
+"""Defines a Rectangle class."""
 
 
 class Rectangle:
-    """Defines a reactangle"""
+    """Represent a rectangle."""
     pass
